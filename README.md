@@ -32,7 +32,7 @@ jobs:
   generate-tests:
     runs-on: ubuntu-latest
     steps:
-      - uses: codebeaver-ai/codebeaver-action@v1
+      - uses: codebeaver-ai/codebeaver-action@v0.1.0
         with:
           api-key: ${{ secrets.CODEBEAVER_API_KEY }}
 ```
@@ -48,7 +48,7 @@ jobs:
 ## Example with all options
 
 ```yaml
-- uses: codebeaver-ai/codebeaver-action@v1
+- uses: codebeaver-ai/codebeaver-action@v0.1.0
   with:
     api-key: ${{ secrets.CODEBEAVER_API_KEY }}
     repository: "octocat/Hello-World"
