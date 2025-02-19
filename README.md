@@ -35,6 +35,8 @@ jobs:
       - uses: codebeaver-ai/codebeaver-action@v0.1.0
         with:
           api-key: ${{ secrets.CODEBEAVER_API_KEY }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ## Inputs
@@ -53,6 +55,8 @@ jobs:
     api-key: ${{ secrets.CODEBEAVER_API_KEY }}
     repository: "octocat/Hello-World"
     pr-number: "123"
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ## Roadmap
