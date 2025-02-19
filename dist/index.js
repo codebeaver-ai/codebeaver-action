@@ -32609,7 +32609,7 @@ async function run() {
             repo,
         });
         // Call CodeBeaver API
-        const response = await fetch('https://app.codebeaver.ai/api/webhook/', {
+        const response = await fetch('https://bkn.codebeaver.ai/api/webhook/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
