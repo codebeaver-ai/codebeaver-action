@@ -1,0 +1,24 @@
+name: "CodeBeaver Test Generator"
+description: "Automatically generate unit tests for your pull requests using CodeBeaver"
+author: "CodeBeaver"
+
+branding:
+  icon: "check-circle"
+  color: "blue"
+
+inputs:
+  api-key:
+    description: "CodeBeaver API Key"
+    required: true
+  repository:
+    description: "The repository in owner/repo format"
+    required: false
+    default: ${{ github.repository }}
+  pr-number:
+    description: "Pull request number"
+    required: false
+    default: ${{ github.event.pull_request.number }}
+
+runs:
+  using: "node20"
+  main: "dist/index.js"
