@@ -1,5 +1,5 @@
-name: "CodeBeaver Test Generator"
-description: "Automatically generate unit tests for your pull requests using CodeBeaver"
+name: "CodeBeaver"
+description: "Generate unit tests, run them, and spot bugs"
 author: "CodeBeaver"
 
 branding:
