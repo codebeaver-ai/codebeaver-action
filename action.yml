@@ -17,7 +17,11 @@ inputs:
   pr-number:
     description: "Pull request number"
     required: false
-    default: ${{ github.event.pull_request.number }}
+    default: ${{ github.event.pull_request && github.event.pull_request.number || '' }}
+  commit_sha:
+    description: "Commit SHA to analyze"
+    required: false
+    default: ${{ github.event.pull_request && github.event.pull_request.head.sha || github.sha }}
   action-type:
     required: false
     description: "Type of action to perform"
