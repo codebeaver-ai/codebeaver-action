@@ -18,6 +18,10 @@ inputs:
     description: "Pull request number"
     required: false
     default: ${{ github.event.pull_request.number }}
+  action-type:
+    required: false
+    description: "Type of action to perform"
+    default: "analyze-and-generate"
 
 runs:
   using: "node20"
