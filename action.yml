@@ -3,8 +3,8 @@ description: "Generate unit tests, run them, and spot bugs"
 author: "CodeBeaver"
 
 branding:
-  icon: "check-circle"
-  color: "blue"
+  icon: "🦫"
+  color: "orange"
 
 inputs:
   api-key:
