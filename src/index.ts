@@ -7,6 +7,7 @@ async function run(): Promise<void> {
     const apiKey = core.getInput('api-key', { required: true });
     const repository = core.getInput('repository');
     const prNumber = core.getInput('pr-number');
+    const actionType = core.getInput('action-type', { required: true });
     
     // Parse repository owner and name
     const [owner, repo] = repository.split('/');
@@ -30,6 +31,7 @@ async function run(): Promise<void> {
       body: JSON.stringify({
         type: 'pull_request',
         git_provider_service: 'github',
+        action: actionType,
         git_provider_id: repoData.id.toString(),
         pr_number: prNumber
       })

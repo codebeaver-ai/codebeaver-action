@@ -8,6 +8,7 @@ This action triggers CodeBeaver to generate unit tests for your pull requests au
 - Uses CodeBeaver's AI-powered analysis to create relevant tests
 - Supports all languages and frameworks that CodeBeaver supports
 - Integrates seamlessly with GitHub's pull request workflow
+- Configurable action types for different CodeBeaver operations
 
 ## Usage
 
@@ -35,17 +36,33 @@ jobs:
       - uses: codebeaver-ai/codebeaver-action@v0.1.0
         with:
           api-key: ${{ secrets.CODEBEAVER_API_KEY }}
+          action-type: "analyze-and-generate"
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
 
 ## Inputs
 
-| Input        | Description                     | Required | Default            |
-| ------------ | ------------------------------- | -------- | ------------------ |
-| `api-key`    | CodeBeaver API Key              | Yes      | N/A                |
-| `repository` | Repository in owner/repo format | No       | Current repository |
-| `pr-number`  | Pull request number             | No       | Current PR number  |
+| Input         | Description                     | Required | Default            |
+| ------------- | ------------------------------- | -------- | ------------------ |
+| `api-key`     | CodeBeaver API Key              | Yes      | N/A                |
+| `action-type` | Type of action to perform       | Yes      | N/A                |
+| `repository`  | Repository in owner/repo format | No       | Current repository |
+| `pr-number`   | Pull request number             | No       | Current PR number  |
+
+### Action Types
+
+The `action-type` parameter determines what operation CodeBeaver will perform:
+
+- `analyze` - Analyzes your changes and provides tests results and bug detection analysis as a PR comment
+- `analyze-and-generate` - Does everything `analyze` does, plus generates test files and creates a new PR with the changes
+- `dry-run` - Performs analysis and shows what would be generated without making any changes
+
+Each action type provides different levels of automation:
+
+- Use `analyze` when you want CodeBeaver to run existing tests and provide results as a PR comment
+- Use `analyze-and-generate` when you want CodeBeaver to run existing tests, generate new tests, and propose them via a new PR
+- Use `dry-run` during initial setup or to preview CodeBeaver's analysis
 
 ## Example with all options
 
@@ -55,6 +72,7 @@ jobs:
     api-key: ${{ secrets.CODEBEAVER_API_KEY }}
     repository: "octocat/Hello-World"
     pr-number: "123"
+    action-type: "analyze-and-generate"
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
